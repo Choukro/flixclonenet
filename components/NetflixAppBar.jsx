@@ -1,3 +1,10 @@
+/**
+ * NetflixAppBar.jsx
+ *
+ * @param
+ * @returns
+ */
+
 import * as React from "react";
 import Image from "next/image";
 import AppBar from "@mui/material/AppBar";

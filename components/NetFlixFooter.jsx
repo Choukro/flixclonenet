@@ -1,3 +1,10 @@
+/**
+ * NetflixAppFooter.jsx
+ *
+ * @param void
+ * @returns <footer>...</footer>
+ */
+
 import * as React from "react";
 
 const NetFlixFooter = () => {
