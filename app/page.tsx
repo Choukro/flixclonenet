@@ -14,10 +14,24 @@ import {NetflixApp} from '../components/NetflixApp'
 //   },
 // })
 
-export default function Home() {
+import getQueryClient from '../_lib/getQueryClient';
+import { dehydrate } from '@tanstack/react-query';
+import { HydrationBoundary } from '@tanstack/react-query'
+
+
+
+export default async function Home() {
+  const queryClient = getQueryClient();
+  const dehydratedState = dehydrate(queryClient);
+
   return (
-  //  <ThemeProvider theme={theme}>
+    //  <ThemeProvider theme={theme}>
+    // <ReactQueryHydrate state={dehydratedState}>
+    <HydrationBoundary state={dehydratedState}>
       <NetflixApp />
+    </HydrationBoundary>
+      
+    // </ReactQueryHydrate>
     // </ThemeProvider>
-  )
+  );
 }
