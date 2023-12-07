@@ -1,6 +1,6 @@
-import { NetflixAppBar } from "../components/NetflixAppBar.jsx";
+import { NetflixAppBar } from "../components/client/NetflixAppBar.jsx";
 import Link from "next/link";
-import "../components/Netflix.css";
+import "../components/client/Netflix.css";
 
 export default function NotFound() {
   const imageUrl = "/assets/bg-lost-in-space.png";
@@ -9,7 +9,6 @@ export default function NotFound() {
       style={{
         backgroundImage: `url('${imageUrl}')`,
         backgroundSize: "cover",
-
         position: "fixed",
         top: 0,
         left: 0,

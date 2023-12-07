@@ -1,23 +1,9 @@
-// 'use client'
-
-import {NetflixApp} from '../components/NetflixApp'
-// import {createTheme, ThemeProvider} from '@mui/material/styles'
-
-// const theme = createTheme({
-//   palette: {
-//     primary: {
-//       main: '#111',
-//     },
-//     secondary: {
-//       main: '#000',
-//     },
-//   },
-// })
-
+import {NetflixApp} from '../components/client/NetflixApp'
 import getQueryClient from '../_lib/getQueryClient';
 import { dehydrate } from '@tanstack/react-query';
 import { HydrationBoundary } from '@tanstack/react-query'
-
+import { ErrorBoundary } from 'react-error-boundary'
+import ErrorFallback from "../components/client/ErrorFallback";
 
 
 export default async function Home() {
@@ -25,13 +11,10 @@ export default async function Home() {
   const dehydratedState = dehydrate(queryClient);
 
   return (
-    //  <ThemeProvider theme={theme}>
-    // <ReactQueryHydrate state={dehydratedState}>
-    <HydrationBoundary state={dehydratedState}>
-      <NetflixApp />
-    </HydrationBoundary>
-      
-    // </ReactQueryHydrate>
-    // </ThemeProvider>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <HydrationBoundary state={dehydratedState}>
+        <NetflixApp />
+      </HydrationBoundary>
+    </ErrorBoundary>
   );
 }

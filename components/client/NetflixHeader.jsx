@@ -10,7 +10,8 @@
 import * as React from "react";
 import { Play } from "lucide-react";
 import { PlusCircle } from "lucide-react";
-import { imagePathOriginal, TYPE_MOVIE } from "../_utils/constants.js";
+import { imagePathOriginal, TYPE_MOVIE } from "../../_utils/constants.js";
+import { HeaderSkeleton } from "../skeletons/HeaderSkeletons.jsx";
 
 const NetflixHeader = ({ movie, type = TYPE_MOVIE }) => {
   const title = type === TYPE_MOVIE ? movie?.title : movie?.name;
@@ -21,10 +22,11 @@ const NetflixHeader = ({ movie, type = TYPE_MOVIE }) => {
     backgroundPosition: "center center",
     color: "white",
     objectFit: "contain",
-    height: "600px",
+    height: "800px",
+    marginBottom: "-60px",
   };
-  if (!movie) {
-    return <></>;
+  if (!movie || movie === null) {
+    return <HeaderSkeleton></HeaderSkeleton>;
   }
   return (
     <header style={banner}>
