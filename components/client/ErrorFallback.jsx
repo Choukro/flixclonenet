@@ -8,6 +8,7 @@
 
 import { NetflixAppBar } from "./NetflixAppBar.jsx";
 import { useRouter } from "next/navigation";
+import "./Netflix.css";
 
 function ErrorFallback({ error, resetErrorBoundary }) {
   const router = useRouter();

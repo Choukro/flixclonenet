@@ -4,10 +4,11 @@ import Skeleton from "@mui/material/Skeleton";
 const styles = {
   banner: {
     backgroundSize: "cover",
-    backgroundPosition: "center center",
+    backgroundPosition: "center top",
     color: "white",
     objectFit: "contain",
-    height: "800px",
+    height: "1000px",
+    marginBottom: "-140px",
   },
 };
 

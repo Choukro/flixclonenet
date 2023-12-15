@@ -12,7 +12,27 @@ import { NetflixRowView } from "./NetFlixRowView.jsx";
 import { TYPE_MOVIE } from "../../_utils/constants.js";
 import { RowSkeleton } from "../skeletons/RowSkeleton.jsx";
 import { getMoviesFilterQueryFn } from "../../_queryFns/getMoviesFilterQueryFn";
-import { useQuery } from "@tanstack/react-query";
+import {
+  dehydrate,
+  QueryClient,
+  useQuery,
+  HydrationBoundary,
+} from "@tanstack/react-query";
+
+export async function getStaticProps({ type, filter, param }) {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ["moviesFilter", type, filter, param],
+    queryFn: () => getMoviesFilterQueryFn(type, filter, param),
+  });
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+}
 
 const NetflixRow = ({
   title = "",
@@ -41,4 +61,27 @@ const NetflixRow = ({
   );
 };
 
-export { NetflixRow };
+const NetflixRowRoute = ({
+  dehydratedState,
+  wideImage,
+  watermark,
+  type,
+  filter,
+  title,
+  param,
+}) => {
+  return (
+    <HydrationBoundary state={dehydratedState}>
+      <NetflixRow
+        type={type}
+        wideImage={wideImage}
+        watermark={watermark}
+        filter={filter}
+        title={title}
+        param={param}
+      />
+    </HydrationBoundary>
+  );
+};
+
+export { NetflixRowRoute };

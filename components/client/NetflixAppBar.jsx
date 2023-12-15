@@ -39,49 +39,51 @@ const NetflixAppBar = () => {
   }, []);
   const margin10 = { margin: 10 };
   return (
-    <AppBar style={appBarStyle}>
-      <Toolbar>
-        <Image
-          className="nav__logo"
-          src="/assets/netflix-logo.png"
-          alt=""
-          height={30}
-          width={96}
-        />
-        <a href="/">
-          <Typography style={margin10} variant="subtitle2">
-            Acceuil
-          </Typography>
-        </a>
-        <a href="/series">
-          <Typography style={margin10} variant="subtitle2">
-            Serie
-          </Typography>
-        </a>
-        <a href="/movies">
-          <Typography style={margin10} variant="subtitle2">
-            Films
-          </Typography>
-        </a>
-        <a href="/news">
-          <Typography style={margin10} variant="subtitle2">
-            Nouveautés les plus regardées
-          </Typography>
-        </a>
-        <a href="/list">
-          <Typography style={margin10} variant="subtitle2">
-            Ma liste
-          </Typography>
-        </a>
-        <Image
-          src="/assets/netflix-avatar.png"
-          alt=""
-          height={30}
-          width={96}
-          className="nav__avatar"
-        />
-      </Toolbar>
-    </AppBar>
+    <nav>
+      <AppBar style={appBarStyle}>
+        <Toolbar>
+          <Image
+            className="nav__logo"
+            src="/assets/netflix-logo.png"
+            alt=""
+            height={30}
+            width={96}
+          />
+          <a href="/">
+            <Typography style={margin10} variant="subtitle2">
+              Acceuil
+            </Typography>
+          </a>
+          <a href="/series">
+            <Typography style={margin10} variant="subtitle2">
+              Serie
+            </Typography>
+          </a>
+          <a href="/movies">
+            <Typography style={margin10} variant="subtitle2">
+              Films
+            </Typography>
+          </a>
+          <a href="/news">
+            <Typography style={margin10} variant="subtitle2">
+              Nouveautés les plus regardées
+            </Typography>
+          </a>
+          <a href="/list">
+            <Typography style={margin10} variant="subtitle2">
+              Ma liste
+            </Typography>
+          </a>
+          <Image
+            src="/assets/netflix-avatar.png"
+            alt=""
+            height={30}
+            width={96}
+            className="nav__avatar"
+          />
+        </Toolbar>
+      </AppBar>
+    </nav>
   );
 };
 
