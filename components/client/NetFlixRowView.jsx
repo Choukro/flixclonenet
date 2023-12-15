@@ -44,10 +44,10 @@ const NetflixRowView = ({
 
 const RowCard = ({ movie, type, watermark, wideImage }) => {
   const buildImagePath = (data) => {
-    const image = wideImage ? data?.backdrop_path : data?.poster_path;
     const noImage = wideImage
-      ? "/../../public/assets/no-image.jpg"
-      : "/../../public/assets/no-image-poster.jpg";
+      ? "/assets/no-image.jpg"
+      : "/assets/no-image-poster.jpg";
+    const image = wideImage ? data?.backdrop_path : data?.poster_path;
     return image ? `${imagePath400}${image}` : noImage;
     // return image ? `${imagePath400}${image}` : null;
   };

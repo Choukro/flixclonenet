@@ -14,8 +14,8 @@ function ErrorFallback({ error, resetErrorBoundary }) {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push("/");
     resetErrorBoundary();
+    router.push("/");
   };
   return (
     <div>

@@ -11,6 +11,7 @@ import Image from "next/image";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import Link from "next/link";
 
 const NetflixAppBar = () => {
   const [appBarStyle, setAppBarStyle] = React.useState({
@@ -49,26 +50,26 @@ const NetflixAppBar = () => {
             height={30}
             width={96}
           />
-          <a href="/">
+          <Link href="/">
             <Typography style={margin10} variant="subtitle2">
               Acceuil
             </Typography>
-          </a>
-          <a href="/series">
+          </Link>
+          <Link href="/series">
             <Typography style={margin10} variant="subtitle2">
               Serie
             </Typography>
-          </a>
-          <a href="/movies">
+          </Link>
+          <Link href="/movies">
             <Typography style={margin10} variant="subtitle2">
               Films
             </Typography>
-          </a>
-          <a href="/news">
+          </Link>
+          <Link href="/news">
             <Typography style={margin10} variant="subtitle2">
               Nouveautés les plus regardées
             </Typography>
-          </a>
+          </Link>
           <a href="/list">
             <Typography style={margin10} variant="subtitle2">
               Ma liste

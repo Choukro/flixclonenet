@@ -6,6 +6,8 @@ export const getMoviesFilterQueryFn = async (type, filter, param) => {
   const endpointTopRated = `${type}/top_rated`;
   const endpointGenre = `discover/${type}?with_genres=${param}`;
   const endpointTrending = `trending/${type}/day`;
+  const endpointNowPlaying = `${type}/now_playing`;
+  const endpointOnTheAir = `${type}/on_the_air`;
 
   let endpoint;
   switch (filter) {
@@ -23,6 +25,12 @@ export const getMoviesFilterQueryFn = async (type, filter, param) => {
       break;
     case "trending":
       endpoint = endpointTrending;
+      break;
+    case "now_playing":
+      endpoint = endpointNowPlaying;
+      break;
+    case "on_the_air":
+      endpoint = endpointOnTheAir;
       break;
     default:
       throw new Error("Type non supporté");
