@@ -86,7 +86,6 @@ const NetflixById = () => {
     backgroundSize: "cover",
     backgroundPosition: "center top",
     color: "white",
-    objectFit: "contain",
     height: "1000px",
     marginBottom: "-140px",
   };
@@ -94,7 +93,7 @@ const NetflixById = () => {
   const searchType = movieById?.title ? TYPE_MOVIE : TYPE_TV;
   return (
     <>
-      <header style={banner}>
+      <header className="banner" style={banner}>
         <div className="banner__contents">
           <h1 className="banner__title">{title ?? "..."}</h1>
           <div className="banner__buttons">

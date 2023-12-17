@@ -6,7 +6,6 @@ const styles = {
     backgroundSize: "cover",
     backgroundPosition: "center top",
     color: "white",
-    objectFit: "contain",
     height: "1280px",
     marginBottom: "-140px",
   },
@@ -14,7 +13,7 @@ const styles = {
 
 const HeaderSkeleton = () => {
   return (
-    <header style={styles.banner}>
+    <header className="banner" style={styles.banner}>
       <div className="banner__contents">
         <h1 className="banner__title">
           <Skeleton animation="wave" width={210} sx={{ bgcolor: "grey.900" }} />

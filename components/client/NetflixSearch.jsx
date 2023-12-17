@@ -80,7 +80,6 @@ const NetflixSearch = () => {
     backgroundSize: "cover",
     backgroundPosition: "center top",
     color: "white",
-    objectFit: "contain",
     height: "1000px",
     marginBottom: "-140px",
   };
@@ -92,7 +91,7 @@ const NetflixSearch = () => {
   const series = data.results.filter((result) => result.media_type === TYPE_TV);
   return (
     <>
-      <header style={banner}>
+      <header className="banner" style={banner}>
         <div className="banner__contents">
           <h1 className="banner__title">{title ?? "..."}</h1>
           <div className="banner__buttons">

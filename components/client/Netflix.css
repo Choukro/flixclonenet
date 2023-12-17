@@ -105,9 +105,7 @@
     object-fit: contain;
     height: 1000px;
     margin-bottom: -140px; */
-    position: relative;
-    margin-bottom: -140px;
-    min-height: 1000px;
+    object-fit: contain;
 }
 
 .banner__contents {
@@ -147,6 +145,18 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, .45);
     padding-top: 5rem;
     text-align: justify;
+}
+
+@media (max-width: 1024px) {
+    .banner {
+        height: 800px!important;
+    }
+    .banner--fadeBottom {
+        margin-top: 330px!important;
+    }
+    .synopsis__byId {
+        width: 80%;
+    }
 }
 
 .banner__buttons {
