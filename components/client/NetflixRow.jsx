@@ -42,13 +42,38 @@ const NetflixRow = ({
   filter = "populaire",
   watermark = false,
 }) => {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError, isSuccess, error } = useQuery({
     queryKey: ["moviesFilter", type, filter, param],
     queryFn: () => getMoviesFilterQueryFn(type, filter, param),
   });
-  console.log("%c Row data isLoading", "color: red", isLoading);
-  if (!data?.results && isLoading) {
+  if (isError) {
+    console.log(
+      `%c Query error (moviesFilter, ${type}, ${filter}, ${
+        param ? param : "no paramater"
+      }) :`,
+      "color: red",
+      isError
+    );
+    console.log(
+      `Error message (moviesFilter, ${type}, ${filter}, ${
+        param ? param : "no paramater"
+      }) :`,
+      error.message
+    );
+  }
+
+  // if (!data?.results && isLoading) {
+  if (isLoading) {
     return <RowSkeleton title={title} wideImage={wideImage} />;
+  }
+  if (isSuccess) {
+    console.log(
+      `%c Query success (moviesFilter, ${type}, ${filter}, ${
+        param ? param : "no paramater"
+      }) :`,
+      "color: green",
+      isSuccess
+    );
   }
   return (
     <NetflixRowView
