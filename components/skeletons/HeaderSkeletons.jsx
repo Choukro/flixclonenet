@@ -30,8 +30,16 @@ const HeaderSkeleton = () => {
           />
           <Skeleton
             animation="wave"
-            variant="rounded"
-            width={275}
+            variant="circular"
+            width={56}
+            height={56}
+            sx={{ bgcolor: "grey.900" }}
+            style={{ marginRight: 15 }}
+          />
+          <Skeleton
+            animation="wave"
+            variant="circular"
+            width={56}
             height={56}
             sx={{ bgcolor: "grey.900" }}
           />

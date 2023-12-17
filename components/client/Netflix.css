@@ -87,6 +87,16 @@
     color: #e5e5e5;
 }
 
+.row__noResult {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    font-size: 5vh;
+}
+
 .banner {
     /* background-image: url('../../public/assets/netflix-n.png');
     background-size: cover;
@@ -143,28 +153,41 @@
     outline: none;
     border: none;
     font-weight: 500;
-    font-size: calc(18px + (4) * ((100vw - 300px) / (1600 - 300)));
-    line-height: calc(18px + (4) * ((100vw - 300px) / (1600 - 300)));
-    border-radius: 0.2vw;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    margin-right: 1rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    
 }
 
 .banner__button:hover {
     opacity: 0.7;
 }
 
+
 .banner__buttonInfo {
     color: #fff;
     background-color: rgba(51, 51, 51, 0.5);
+    border-radius: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-right: 1rem;
+}
+
+.banner__buttonInfo:hover {
+    color: #000;
+    background-color: #fff;
 }
 
 .banner__buttonplay {
     color: #000;
     background-color: #e6e6e6;
+    border-radius: 0.2vw;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: calc(18px + (4) * ((100vw - 300px) / (1600 - 300)));
+    line-height: calc(18px + (4) * ((100vw - 300px) / (1600 - 300)));
 }
 
 .banner__buttonplay:hover {
@@ -189,7 +212,6 @@
 
 .nav__avatar {
     object-fit: contain;
-    margin-left: auto;
 }
 
 .nav {

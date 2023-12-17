@@ -9,8 +9,13 @@
 
 import * as React from "react";
 import { Play } from "lucide-react";
+import { Info } from "lucide-react";
 import { PlusCircle } from "lucide-react";
-import { imagePathOriginal, TYPE_MOVIE } from "../../_utils/constants.js";
+import {
+  imagePathOriginal,
+  TYPE_MOVIE,
+  TYPE_TV,
+} from "../../_utils/constants.js";
 import { HeaderSkeleton } from "../skeletons/HeaderSkeletons.jsx";
 import {
   dehydrate,
@@ -36,16 +41,44 @@ export async function getStaticProps({ type }) {
 }
 
 const NetflixHeader = ({ type }) => {
-  const { data: movie, isLoading } = useQuery({
+  const {
+    data: movie,
+    isLoading,
+    isError,
+    isSuccess,
+    error,
+  } = useQuery({
     queryKey: ["headerMovie", type],
     queryFn: () => getMovieQueryFn(type),
   });
+
+  if (isError) {
+    console.log(
+      `%c Query error (headerMovie, ${type ? type : "no type"}) :`,
+      "color: red",
+      isError
+    );
+    console.log(
+      `Error message (headerMovie, ${type ? type : "no type"}) :`,
+      error.message
+    );
+  }
+  // if (!movie || movie === null) {
+  if (isLoading) {
+    return <HeaderSkeleton></HeaderSkeleton>;
+  }
+  if (isSuccess) {
+    console.log(
+      `%c Query success (headerMovie, ${type ? type : "no type"}) :`,
+      "color: green",
+      isSuccess
+    );
+  }
   const title = movie?.title ? movie?.title : movie?.name;
-  // console.log("movie", movie);
-  console.log("%c Header of NetflixApp isLoading", "color: red", isLoading);
   // if (isLoading) return <div style={{ color: "white" }}>Loading...</div>;
   // if (!headerMovie) return <div style={{ color: "white" }}>Not found</div>;
   // const title = type === TYPE_MOVIE ? movie?.title : movie?.name;
+  const searchType = movie?.title ? TYPE_MOVIE : TYPE_TV;
   const imageUrl = `${imagePathOriginal}${movie?.backdrop_path}`;
   const banner = {
     // backgroundImage: `url('${imageUrl}')`,
@@ -65,21 +98,32 @@ const NetflixHeader = ({ type }) => {
     height: "1000px",
     marginBottom: "-140px",
   };
-  if (!movie || movie === null) {
-    return <HeaderSkeleton></HeaderSkeleton>;
-  }
   return (
     <header style={banner}>
       <div className="banner__contents">
         <h1 className="banner__title">{title ?? "..."}</h1>
         <div className="banner__buttons">
-          <button className="banner__button banner__buttonplay">
-            <Play fill="#111" />
-            <span>Lecture</span>
-          </button>
+          <a
+            href={`https://www.youtube.com/results?search_query=${searchType}%20${title}`}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <button className="banner__button banner__buttonplay">
+              <Play fill="#111" />
+              <span>Lecture</span>
+            </button>
+          </a>
+          <a
+            href={`https://www.google.com/search?q=${searchType}%20${title}`}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <button className="banner__button banner__buttonInfo">
+              <Info />
+            </button>
+          </a>
           <button className="banner__button banner__buttonInfo">
             <PlusCircle />
-            <span>Ajouter à ma liste</span>
           </button>
         </div>
         <p className="synopsis">{movie?.overview ?? "..."}</p>
