@@ -110,12 +110,12 @@ const NetflixAppBar = () => {
               Acceuil
             </Typography>
           </Link>
-          <Link href="/series">
+          <Link href="/tv">
             <Typography style={margin10} variant="subtitle2">
-              Serie
+              Series
             </Typography>
           </Link>
-          <Link href="/movies">
+          <Link href="/movie">
             <Typography style={margin10} variant="subtitle2">
               Films
             </Typography>
@@ -125,7 +125,7 @@ const NetflixAppBar = () => {
               Nouveautés les plus regardées
             </Typography>
           </Link>
-          <a href="/list">
+          <a href="/404">
             <Typography style={margin10} variant="subtitle2">
               Ma liste
             </Typography>

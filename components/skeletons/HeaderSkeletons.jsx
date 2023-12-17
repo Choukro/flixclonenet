@@ -7,7 +7,7 @@ const styles = {
     backgroundPosition: "center top",
     color: "white",
     objectFit: "contain",
-    height: "1000px",
+    height: "1280px",
     marginBottom: "-140px",
   },
 };

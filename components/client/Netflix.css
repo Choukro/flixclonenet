@@ -138,6 +138,17 @@
     -webkit-box-orient: vertical;
 }
 
+.synopsis__byId {
+    color: #fff;
+    line-height: normal;
+    width: 40%;
+    font-weight: 600;
+    font-size: calc(18px + (4) * ((100vw - 300px) / (1600 - 300)));
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .45);
+    padding-top: 5rem;
+    text-align: justify;
+}
+
 .banner__buttons {
     margin-top: 1vw;
     display: flex;

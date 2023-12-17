@@ -11,6 +11,7 @@ import React from "react";
 import { RowSkeleton } from "../skeletons/RowSkeleton.jsx";
 import { TYPE_MOVIE, imagePath400 } from "../../_utils/constants.js";
 import Image from "next/image";
+import Link from "next/link";
 
 const NetflixRowView = ({
   data = [],
@@ -58,14 +59,16 @@ const RowCard = ({ movie, type, watermark, wideImage }) => {
     return <></>;
   }
   return (
-    <div className={`row__poster row__posterLarge ${watermarkClass}`}>
-      <Image
-        src={buildImagePath(movie)}
-        alt={title}
-        width={wideImage ? 400 : 166}
-        height={wideImage ? 225 : 250}
-      />
-    </div>
+    <Link href={`/${type}/${movie.id}`}>
+      <div className={`row__poster row__posterLarge ${watermarkClass}`}>
+        <Image
+          src={buildImagePath(movie)}
+          alt={title}
+          width={wideImage ? 400 : 166}
+          height={wideImage ? 225 : 250}
+        />
+      </div>
+    </Link>
   );
 };
 
