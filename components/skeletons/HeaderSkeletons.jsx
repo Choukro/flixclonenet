@@ -6,7 +6,7 @@ const styles = {
     backgroundSize: "cover",
     backgroundPosition: "center top",
     color: "white",
-    height: "1280px",
+    height: "1000px",
     marginBottom: "-140px",
   },
 };

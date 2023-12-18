@@ -25,6 +25,7 @@ import { NetflixRowView } from "./NetFlixRowView.jsx";
 import { useParams } from "next/navigation";
 import { imagePathOriginal } from "../../_utils/constants.js";
 import Link from "next/link";
+import { RowSkeleton } from "../skeletons/RowSkeleton.jsx";
 
 export async function getStaticProps(params) {
   const queryClient = new QueryClient();
@@ -64,7 +65,12 @@ const NetflixSearch = () => {
   }
   // console.log("%c Header of NetflixSearch isLoading", "color: red", isLoading);
   if (isLoading || !defaultMovie) {
-    return <HeaderSkeleton></HeaderSkeleton>;
+    return (
+      <>
+        <HeaderSkeleton />
+        <RowSkeleton />
+      </>
+    );
   }
   if (isSuccess) {
     console.log(

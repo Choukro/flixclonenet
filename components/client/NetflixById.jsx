@@ -24,6 +24,7 @@ import { TYPE_MOVIE, TYPE_TV } from "../../_utils/constants.js";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { imagePathOriginal } from "../../_utils/constants.js";
 import { RowCard } from "./NetFlixRowView.jsx";
+import { PosterSkeleton } from "../skeletons/PosterSkeleton.jsx";
 
 export async function getStaticProps(params) {
   const queryClient = new QueryClient();
@@ -68,7 +69,12 @@ const NetflixById = () => {
     return null;
   }
   if (isLoading) {
-    return <HeaderSkeleton></HeaderSkeleton>;
+    return (
+      <>
+        <HeaderSkeleton />
+        <PosterSkeleton />
+      </>
+    );
   }
   if (isSuccess) {
     console.log(
@@ -90,6 +96,7 @@ const NetflixById = () => {
     marginBottom: "-140px",
   };
   const title = type === TYPE_MOVIE ? movieById?.title : movieById?.name;
+  const typeSearch = type === TYPE_MOVIE ? "du film" : "de la série";
   const searchType = movieById?.title ? TYPE_MOVIE : TYPE_TV;
   return (
     <>
@@ -131,7 +138,7 @@ const NetflixById = () => {
           marginTop: "3rem",
         }}
       >
-        <h2>Affiche du film</h2>
+        <h2>Affiche&nbsp;{typeSearch}</h2>
         <div className="row__posters">
           <RowCard
             movie={movieById}
