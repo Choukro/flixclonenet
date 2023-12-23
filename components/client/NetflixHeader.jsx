@@ -10,7 +10,8 @@
 import * as React from "react";
 import { Play } from "lucide-react";
 import { Info } from "lucide-react";
-import { PlusCircle } from "lucide-react";
+// import { PlusCircle } from "lucide-react";
+import { BookmarkButton } from "../client/BookmarkButton";
 import {
   imagePathOriginal,
   TYPE_MOVIE,
@@ -122,7 +123,7 @@ const NetflixHeader = ({ type }) => {
             </button>
           </a>
           <button className="banner__button banner__buttonInfo">
-            <PlusCircle />
+            <BookmarkButton movieId={movie.id} type={searchType} row={false} />
           </button>
         </div>
         <p className="synopsis">{movie?.overview ?? "..."}</p>

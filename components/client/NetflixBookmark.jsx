@@ -83,8 +83,6 @@ const NetflixBookmark = (dehydratedState) => {
       isSuccess
     );
   }
-  console.log("data", data);
-  console.log("data movies", data?.movies);
   const imagePath = movieHeader?.backdrop_path
     ? movieHeader.backdrop_path
     : movieHeader.poster_path;

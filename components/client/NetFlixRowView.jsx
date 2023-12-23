@@ -13,6 +13,7 @@ import { TYPE_MOVIE, imagePath400 } from "../../_utils/constants.js";
 import Image from "next/image";
 import Link from "next/link";
 import { AlignJustify } from "lucide-react";
+import { Plus } from "lucide-react";
 
 const NetflixRowView = ({
   data = [],
@@ -114,7 +115,8 @@ const RowCard = ({ movie, type, watermark, wideImage }) => {
                 </div>
                 <div className="card__icon">
                   <button className="btn btn--transparent btn--circle">
-                    <svg
+                    <Plus className="card__icon--small card__icon--lucide" />
+                    {/* <svg
                       className="card__icon--small"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -123,7 +125,7 @@ const RowCard = ({ movie, type, watermark, wideImage }) => {
                       viewBox="0 0 24 24"
                     >
                       <path d="M12 0a1.5 1.5 0 011.5 1.5v9h9a1.5 1.5 0 110 3h-9v9a1.5 1.5 0 11-3 0v-9h-9a1.5 1.5 0 110-3h9v-9A1.5 1.5 0 0112 0z" />
-                    </svg>
+                    </svg> */}
                   </button>
                   <button className="btn btn--transparent btn--circle">
                     <AlignJustify className="card__icon--small card__icon--lucide" />

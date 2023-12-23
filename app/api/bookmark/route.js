@@ -23,6 +23,5 @@ export async function GET() {
   if (!favoriteMovies) {
     return NextResponse("Aucun film favori !", { status: 404 });
   }
-  console.log("Favori :", favoriteMovies);
   return NextResponse.json(favoriteMovies);
 }
