@@ -101,7 +101,7 @@ const NetflixAppBar = () => {
           <Image
             className="nav__logo"
             src="/assets/netflix-logo.png"
-            alt=""
+            alt="Logo Netflix"
             height={30}
             width={96}
           />
@@ -125,7 +125,7 @@ const NetflixAppBar = () => {
               Nouveautés les plus regardées
             </Typography>
           </Link>
-          <a href="/404">
+          <a href="/bookmark">
             <Typography style={margin10} variant="subtitle2">
               Ma liste
             </Typography>

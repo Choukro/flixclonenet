@@ -49,7 +49,6 @@ const RowCard = ({ movie, type, watermark, wideImage }) => {
     type === TYPE_MOVIE
       ? movie?.release_date.substring(0, 4)
       : movie?.first_air_date.substring(0, 4);
-  console.log("date", date.substring(0, 4));
   const buildImagePath = (data) => {
     const noImage = wideImage
       ? "/assets/no-image.jpg"
@@ -78,7 +77,7 @@ const RowCard = ({ movie, type, watermark, wideImage }) => {
       ) : (
         <div className="wrapper">
           <div className="card card--rounded wrapper__front">
-            <div className="card__header">
+            <div className={`card__header ${watermarkClass}`}>
               <Image
                 src={buildImagePath(movie)}
                 alt={title}
@@ -88,7 +87,7 @@ const RowCard = ({ movie, type, watermark, wideImage }) => {
             </div>
           </div>
           <div className="card card--rounded wrapper__back">
-            <div className="card__header">
+            <div className={`card__header ${watermarkClass}`}>
               <Image
                 src={buildImagePath(movie)}
                 alt={title}

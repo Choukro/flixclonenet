@@ -27,15 +27,15 @@ export default function NetflixSeriesPage() {
         wideImage={true}
         watermark={false}
         type={TYPE_TV}
-        filter="on_the_air"
-        title="Séries diffusées dans les prochains jours"
+        filter="trending"
+        title="Séries les plus récentes"
       />
       <NetflixRowRoute
         wideImage={false}
         watermark={false}
         type={TYPE_TV}
-        filter="trending"
-        title="Séries les plus récentes"
+        filter="on_the_air"
+        title="Séries diffusées à la TV dans les prochains jours"
       />
       <NetFlixFooter />
     </div>
