@@ -9,7 +9,8 @@
 
 import React from "react";
 import { Play } from "lucide-react";
-import { PlusCircle } from "lucide-react";
+// import { PlusCircle } from "lucide-react";
+import { BookmarkButton } from "../client/BookmarkButton";
 import { Info } from "lucide-react";
 import { HeaderSkeleton } from "../skeletons/HeaderSkeletons.jsx";
 import {
@@ -25,6 +26,7 @@ import { useParams, usePathname, useRouter } from "next/navigation";
 import { imagePathOriginal } from "../../_utils/constants.js";
 import { RowCard } from "./NetFlixRowView.jsx";
 import { PosterSkeleton } from "../skeletons/PosterSkeleton.jsx";
+import Tooltip from "@mui/material/Tooltip";
 
 export async function getStaticProps(params) {
   const queryClient = new QueryClient();
@@ -93,7 +95,7 @@ const NetflixById = () => {
     backgroundPosition: "center top",
     color: "white",
     height: "1000px",
-    marginBottom: "-140px",
+    marginBottom: "-40px",
   };
   const title = type === TYPE_MOVIE ? movieById?.title : movieById?.name;
   const typeSearch = type === TYPE_MOVIE ? "du film" : "de la série";
@@ -120,11 +122,17 @@ const NetflixById = () => {
               target="_blank"
             >
               <button className="banner__button banner__buttonInfo">
-                <Info />
+                <Tooltip title="En savoir plus">
+                  <Info />
+                </Tooltip>
               </button>
             </a>
             <button className="banner__button banner__buttonInfo">
-              <PlusCircle />
+              <BookmarkButton
+                movieId={movieById.id}
+                type={searchType}
+                row={false}
+              />
             </button>
           </div>
           <p className="synopsis__byId">{movieById?.overview ?? "..."}</p>

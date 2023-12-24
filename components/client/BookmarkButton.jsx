@@ -6,6 +6,7 @@ import { CheckCircle2 } from "lucide-react";
 import { Plus } from "lucide-react";
 import { Check } from "lucide-react";
 import { TYPE_MOVIE } from "../../_utils/constants";
+import Tooltip from "@mui/material/Tooltip";
 
 const BookmarkButton = ({ movieId, type, row = false }) => {
   const { data, mutate: mutateFavorites } = useFavorites();
@@ -45,6 +46,7 @@ const BookmarkButton = ({ movieId, type, row = false }) => {
     // });
     mutateFavorites();
   }, [movieId, isFavorite, type, mutateFavorites]);
+
   let Icon;
   if (row) {
     Icon = isFavorite ? Check : Plus;
@@ -53,10 +55,14 @@ const BookmarkButton = ({ movieId, type, row = false }) => {
   }
 
   return (
-    <Icon
-      className={row ? "card__icon--small card__icon--lucide" : ""}
-      onClick={toggleFavorites}
-    />
+    <Tooltip
+      title={isFavorite ? "Supprimer de ma liste" : "Ajouter à ma liste"}
+    >
+      <Icon
+        className={row ? "card__icon--small card__icon--lucide" : ""}
+        onClick={toggleFavorites}
+      />
+    </Tooltip>
   );
 };
 

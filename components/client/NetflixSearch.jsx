@@ -9,7 +9,8 @@
 
 import * as React from "react";
 import { Play } from "lucide-react";
-import { PlusCircle } from "lucide-react";
+// import { PlusCircle } from "lucide-react";
+import { BookmarkButton } from "../client/BookmarkButton";
 import { Info } from "lucide-react";
 import { HeaderSkeleton } from "../skeletons/HeaderSkeletons.jsx";
 import {
@@ -26,6 +27,7 @@ import { useParams } from "next/navigation";
 import { imagePathOriginal } from "../../_utils/constants.js";
 import Link from "next/link";
 import { RowSkeleton } from "../skeletons/RowSkeleton.jsx";
+import Tooltip from "@mui/material/Tooltip";
 
 export async function getStaticProps(params) {
   const queryClient = new QueryClient();
@@ -117,11 +119,17 @@ const NetflixSearch = () => {
               target="_blank"
             >
               <button className="banner__button banner__buttonInfo">
-                <Info />
+                <Tooltip title="En savoir plus">
+                  <Info />
+                </Tooltip>
               </button>
             </a>
             <button className="banner__button banner__buttonInfo">
-              <PlusCircle />
+              <BookmarkButton
+                movieId={headerMovie.id}
+                type={searchType}
+                row={false}
+              />
             </button>
           </div>
           <p className="synopsis">{headerMovie?.overview ?? "..."}</p>

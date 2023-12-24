@@ -12,6 +12,8 @@ import { Play } from "lucide-react";
 import { Info } from "lucide-react";
 // import { PlusCircle } from "lucide-react";
 import { BookmarkButton } from "../client/BookmarkButton";
+import Tooltip from "@mui/material/Tooltip";
+
 import {
   imagePathOriginal,
   TYPE_MOVIE,
@@ -119,7 +121,9 @@ const NetflixHeader = ({ type }) => {
             target="_blank"
           >
             <button className="banner__button banner__buttonInfo">
-              <Info />
+              <Tooltip title="En savoir plus">
+                <Info />
+              </Tooltip>
             </button>
           </a>
           <button className="banner__button banner__buttonInfo">

@@ -407,7 +407,6 @@
 .card__icon--small {
     width: 1rem;
     height: 1rem;
-    fill: white;
 }
 
 .card__icon--lucide {
@@ -470,7 +469,7 @@
 }
 
 .btn:hover .card__icon--small {
-    fill: #141414;
+    color: #141414;
 }
 
 .btn:hover .card__icon--lucide {

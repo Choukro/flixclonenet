@@ -9,7 +9,8 @@
 
 import React from "react";
 import { Play } from "lucide-react";
-import { PlusCircle } from "lucide-react";
+// import { PlusCircle } from "lucide-react";
+import { BookmarkButton } from "../client/BookmarkButton";
 import { Info } from "lucide-react";
 import { HeaderSkeleton } from "../skeletons/HeaderSkeletons.jsx";
 import {
@@ -25,6 +26,8 @@ import { imagePathOriginal } from "../../_utils/constants.js";
 import { RowCard } from "./NetFlixRowView.jsx";
 import { RowSkeleton } from "../skeletons/RowSkeleton.jsx";
 import useFavorites from "../../hooks/useFavorites";
+import Tooltip from "@mui/material/Tooltip";
+
 // import CircularProgress from "@mui/material/CircularProgress";
 
 export async function getStaticProps({ type, id }) {
@@ -43,8 +46,8 @@ export async function getStaticProps({ type, id }) {
 }
 
 const NetflixBookmark = (dehydratedState) => {
-  const { data } = useFavorites();
-  const id = data?.movies?.[0] ?? 749274;
+  const { data, isLoading: isLoadingUseFavorites } = useFavorites();
+  const id = data?.movies?.[0] ?? null;
   const router = useRouter();
   const type = TYPE_MOVIE;
   const {
@@ -56,8 +59,17 @@ const NetflixBookmark = (dehydratedState) => {
   } = useQuery({
     queryKey: ["movieHeader", type, id],
     queryFn: () => getMovieQueryFn(type, id),
+    enabled: !isLoadingUseFavorites,
   });
 
+  if (isLoadingUseFavorites || isLoading) {
+    return (
+      <>
+        <HeaderSkeleton />
+        <RowSkeleton />
+      </>
+    );
+  }
   if (isError) {
     console.log(
       `%c Query error (movieHeader, ${type}, ${id}) :`,
@@ -68,14 +80,14 @@ const NetflixBookmark = (dehydratedState) => {
     router.push("/404");
     return null;
   }
-  if (isLoading) {
-    return (
-      <>
-        <HeaderSkeleton />
-        <RowSkeleton />
-      </>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <>
+  //       <HeaderSkeleton />
+  //       <RowSkeleton />
+  //     </>
+  //   );
+  // }
   if (isSuccess) {
     console.log(
       `%c Query success (movieHeader, ${type}, ${id}) :`,
@@ -119,11 +131,17 @@ const NetflixBookmark = (dehydratedState) => {
               target="_blank"
             >
               <button className="banner__button banner__buttonInfo">
-                <Info />
+                <Tooltip title="En savoir plus">
+                  <Info />
+                </Tooltip>
               </button>
             </a>
             <button className="banner__button banner__buttonInfo">
-              <PlusCircle />
+              <BookmarkButton
+                movieId={movieHeader.id}
+                type={searchType}
+                row={false}
+              />
             </button>
           </div>
           <p className="synopsis">{movieHeader?.overview ?? "..."}</p>

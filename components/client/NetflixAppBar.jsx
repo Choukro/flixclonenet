@@ -17,6 +17,7 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
+import Tooltip from "@mui/material/Tooltip";
 
 const Search = styled("div")(({ theme }) => ({
   marginRight: "10px",
@@ -143,20 +144,22 @@ const NetflixAppBar = () => {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-          <Image
-            src="/assets/netflix-avatar.png"
-            alt=""
-            height={30}
-            width={96}
-            className="nav__avatar"
-            onClick={async () => {
-              const data = await signOut({
-                redirect: false,
-                callbackUrl: "/auth",
-              });
-              router.push(data.url);
-            }}
-          />
+          <Tooltip title="Se déconnecter">
+            <Image
+              src="/assets/netflix-avatar.png"
+              alt=""
+              height={30}
+              width={96}
+              className="nav__avatar"
+              onClick={async () => {
+                const data = await signOut({
+                  redirect: false,
+                  callbackUrl: "/auth",
+                });
+                router.push(data.url);
+              }}
+            />
+          </Tooltip>
         </Toolbar>
       </AppBar>
     </nav>
