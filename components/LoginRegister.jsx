@@ -44,6 +44,7 @@ function PopupLogin({ open, handleClose, signup = false }) {
   const router = useRouter();
   const [create, setCreate] = React.useState(signup);
   const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState(false);
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -54,6 +55,7 @@ function PopupLogin({ open, handleClose, signup = false }) {
   };
   const handleSignIn = () => {
     setCreate(false);
+    setStatus(false);
   };
   const label = create ? "Inscrivez-vous" : "S'identifier";
   async function loginUser(e) {
@@ -67,6 +69,7 @@ function PopupLogin({ open, handleClose, signup = false }) {
     console.log("response", response);
     // const responseData = await response.json();
     if (response.ok) {
+      setStatus(true);
       setError(false);
       router.push("/");
       setIsLoading(false);
@@ -88,13 +91,19 @@ function PopupLogin({ open, handleClose, signup = false }) {
       body: JSON.stringify(data),
     });
     if (response.status === 200) {
+      setStatus(true);
       setError(false);
       setIsLoading(false);
       router.push("/auth");
     }
-    if (response.status === 400 || response.error) {
+    if (response.status === 400) {
       setIsLoading(false);
       setMessage(response.error);
+      setError(true);
+    }
+    if (response.status === 500) {
+      setIsLoading(false);
+      setMessage("inscription impossible. Veuillez réessayer plus tard.");
       setError(true);
     }
   }
@@ -258,6 +267,23 @@ function PopupLogin({ open, handleClose, signup = false }) {
           {create
             ? `Une erreur est survenue lors de l'inscription : ${message} !`
             : `Une erreur est survenue lors de la connexion : ${message} !`}
+        </Alert>
+      )}
+      {status && (
+        <Alert
+          severity="success"
+          variant="filled"
+          style={{
+            position: "absolute",
+            bottom: "0",
+            left: "0",
+            right: "0",
+            zIndex: "999",
+          }}
+        >
+          {create
+            ? `Inscription validée. Identifiez-vous pour vous connecter  !`
+            : `Connexion réussie. Vous allez être redirigé vers votre compte !`}
         </Alert>
       )}
     </>
