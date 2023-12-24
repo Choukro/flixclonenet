@@ -1,6 +1,5 @@
 // import useCurrentUser from "@/hooks/useCurrentUser";
 import useFavorites from "../../hooks/useFavorites";
-import axios from "axios";
 import { useCallback, useMemo } from "react";
 import { PlusCircle } from "lucide-react";
 import { CheckCircle2 } from "lucide-react";
