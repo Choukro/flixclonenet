@@ -62,4 +62,4 @@ const NetflixApp = () => {
   );
 };
 
-export { NetflixApp };
+export default NetflixApp;

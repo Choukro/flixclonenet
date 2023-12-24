@@ -23,6 +23,11 @@ const CssDialogue = styled(Dialog)({
 });
 
 const CssTextField = styled(TextField)({
+  "&.MuiFormControl-root": {
+    marginBottom: "1rem",
+    backgroundColor: "#333",
+    borderRadius: "0.5rem",
+  },
   "& .MuiFormLabel-root": {
     color: "#8c8c8c",
     "&.Mui-focused": {
@@ -153,7 +158,6 @@ function PopupLogin({ open, handleClose, signup = false }) {
               autoComplete="email"
               value={data.email}
               onChange={(e) => setData({ ...data, email: e.target.value })}
-              className="popup-login__input"
               required
             />
             <CssTextField
@@ -164,7 +168,6 @@ function PopupLogin({ open, handleClose, signup = false }) {
               variant="filled"
               value={data.password}
               onChange={(e) => setData({ ...data, password: e.target.value })}
-              className="popup-login__input"
               required
             />
             {create ? (
