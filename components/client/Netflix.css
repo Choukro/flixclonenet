@@ -1,0 +1,479 @@
+.login-header {
+    background: linear-gradient(180deg, rgba(0, 0, 0, .5) 0, transparent);
+    border-bottom: transparent;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.popup-login{
+    background-color: transparent;
+    opacity: 1;
+}
+
+/* .popup-login__input {
+    margin-bottom: 1rem;
+    background-color: #333;
+    border-radius: 0.5rem;
+} */
+
+.login-signup-now {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-signup-now__text {
+    color: #737373;
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.login-signup-now__link {
+    color: #fff;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 0.875rem;
+}
+
+.login-signup-now__small {
+    font-size: 0.75rem;
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+    color:#8c8c8c;
+}
+
+.login-signup-now__link:hover {
+    text-decoration: underline;
+}
+
+.row-header-title {
+    display: table-cell;
+    vertical-align: bottom;
+    line-height: 1.25vw;
+    /*font-size: 1vw;*/
+    font-size: calc(18px + (4) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.row__posters {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding: 20px;
+}
+
+.row__poster {
+    cursor: pointer;
+    width: 100%;
+    object-fit: contain;
+    max-height: 100px;
+    margin-right: 10px;
+    transition: transform 450ms;
+}
+
+.watermarked {
+    position: relative;
+}
+
+.watermarked:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-image: url('../../public/assets/netflix-n.png');
+    background-size: 50px 50px;
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+}
+
+.row__poster:hover {
+    transform: scale(1.08);
+}
+
+.row__posters::-webkit-scrollbar {
+    display: none;
+}
+
+.row__posterLarge {
+    max-height: 250px;
+    width: auto;
+}
+
+.row__posterLarge img {
+    max-height: 250px;
+    border-radius: 10px;
+}
+
+.row__posterLarge:hover {
+    transform: scale(1.09);
+}
+
+.row__posterBackdrop {
+    max-height: 250px;
+}
+
+.row__posterBackdrop img {
+    max-height: 250px;
+}
+
+.row__posterBackdrop:hover {
+    transform: scale(1.09);
+}
+
+.row {
+    color: white;
+    margin-left: 20px;
+    margin-bottom: 4rem;
+}
+
+.row h2 {
+    margin-bottom: 0.5rem;
+}
+
+.row__title {
+    font-size: calc(18px + (4) * ((100vw - 300px) / (1600 - 300)));
+    line-height: 1.25vw;
+    vertical-align: bottom;
+    letter-spacing: 0;
+    font-weight: 500;
+    color: #e5e5e5;
+}
+
+.row__noResult {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    font-size: 5vh;
+}
+
+.banner {
+    /* background-image: url('../../public/assets/netflix-n.png');
+    background-size: cover;
+    background-position: top;
+    color: white;
+    object-fit: contain;
+    height: 1000px;
+    margin-bottom: -140px; */
+    object-fit: contain;
+}
+
+.banner__contents {
+    margin-left: 30px;
+    padding-top: 350px;
+    height: 190px;
+}
+
+.banner__title {
+    font-size: 3rem;
+    font-weight: 800;
+    padding-bottom: 0.3rem;
+}
+
+.synopsis {
+    color: #fff;
+    line-height: normal;
+    width: 100%;
+    font-weight: 400;
+    font-size: calc(18px + (4) * ((100vw - 300px) / (1600 - 300)));
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .45);
+    margin-top: 0.1vw;
+    max-width: 500px;
+    padding-top: 1rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.synopsis__byId {
+    color: #fff;
+    line-height: normal;
+    width: 40%;
+    font-weight: 600;
+    font-size: calc(18px + (4) * ((100vw - 300px) / (1600 - 300)));
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .45);
+    padding-top: 5rem;
+    text-align: justify;
+}
+
+@media (max-width: 1024px) {
+    .banner {
+        height: 800px!important;
+    }
+    .banner--fadeBottom {
+        margin-top: 330px!important;
+    }
+    .synopsis__byId {
+        width: 80%;
+    }
+}
+
+.banner__buttons {
+    margin-top: 1vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.banner__button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    
+}
+
+.banner__button:hover {
+    opacity: 0.7;
+}
+
+
+.banner__buttonInfo {
+    color: #fff;
+    background-color: rgba(51, 51, 51, 0.5);
+    border-radius: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-right: 1rem;
+}
+
+.banner__buttonInfo:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+.banner__buttonplay {
+    color: #000;
+    background-color: #e6e6e6;
+    border-radius: 0.2vw;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: calc(18px + (4) * ((100vw - 300px) / (1600 - 300)));
+    line-height: calc(18px + (4) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.banner__buttonplay:hover {
+    opacity: 0.7;
+}
+
+.banner--fadeBottom {
+    margin-top: 530px;
+    height: 7.5rem;
+    background-image: linear-gradient(180deg,
+            transparent,
+            rgba(37, 37, 37, 0.61),
+            #111);
+}
+
+/* nav */
+
+.nav__logo {
+    object-fit: contain;
+    margin-right : 25px;
+}
+
+.nav__avatar {
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    /* background-color: #111; */
+    z-index: 1;
+    transition-timing-function: ease-in;
+    transition: all 0.5s;
+}
+
+.nav__black {
+    background-color: #111;
+}
+
+.footer {
+    text-align: center;
+    color: grey;
+    margin: 10px;
+}
+
+.cards {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.cards a:first-child .wrapper__back {
+    margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+    .cards a:first-child .wrapper__back {
+            margin-left: 0rem;
+    }
+}
+
+.wrapper {
+    position: relative;
+    width: 400px;
+    height: 250px;
+    /* margin-top:0.5rem; */
+}
+
+.wrapper__front {
+    position: absolute;
+    transition: all 250ms ease-out;
+    transition-delay: 200ms;
+}
+
+.wrapper__back {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    transition: all 250ms ease-out;
+    transition-delay: 200ms;
+    z-index: 999;
+}
+
+.wrapper:hover .wrapper__front{
+    opacity: 0;
+}
+
+.wrapper:hover .wrapper__back{
+    opacity: 1;
+    width: 100%;
+    transform: scale(1.1) translateY(-20%);
+}
+
+@media (max-width: 768px) {
+    .wrapper:hover .wrapper__back {
+        transform: scale(1.0) translateY(-20%);
+    }
+}
+
+.card {
+    overflow: hidden;
+    background-color: #141414;
+    box-shadow: 0 0 10px 1px #0a0a0a;
+}
+
+.card--rounded {
+    border-radius: 10px;
+}
+
+.card__body {
+    padding: 1.25rem 0.75rem;
+}
+
+.card__icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card__icon--large {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: #141414;
+}
+
+
+.card__icon--small {
+    width: 1rem;
+    height: 1rem;
+}
+
+.card__icon--lucide {
+    color: white;
+}
+
+.card__icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.card__icon p {
+    font-weight: 500;
+    color:#8e8e8e;
+}
+
+.card__title {
+    color: white;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+.card__subtitle {
+    color: #8e8e8e;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.btn, .btn--large {
+    padding: 0.5rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 250ms;
+}
+
+.btn--transparent {
+    background: transparent;
+}
+
+.btn--circle {
+    border-radius: 50%;
+}
+
+.btn--large:hover {
+    opacity: 0.5;
+    transform: scale(1.2)
+}
+
+.btn:hover {
+    background: white;
+}
+
+.btn:hover .card__icon--small {
+    color: #141414;
+}
+
+.btn:hover .card__icon--lucide {
+    color: #141414;
+}
+
+
