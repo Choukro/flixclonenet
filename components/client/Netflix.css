@@ -1,3 +1,62 @@
+.login-header {
+    background: linear-gradient(180deg, rgba(0, 0, 0, .5) 0, transparent);
+    border-bottom: transparent;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.popup-login{
+    background-color: transparent;
+    opacity: 1;
+}
+
+.popup-login__input {
+    margin-bottom: 1rem;
+    background-color: #333;
+    border-radius: 0.5rem;
+}
+
+.login-signup-now {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-signup-now__text {
+    color: #737373;
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.login-signup-now__link {
+    color: #fff;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 0.875rem;
+}
+
+.login-signup-now__small {
+    font-size: 0.75rem;
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+    color:#8c8c8c;
+}
+
+.login-signup-now__link:hover {
+    text-decoration: underline;
+}
+
 .row-header-title {
     display: table-cell;
     vertical-align: bottom;
@@ -239,6 +298,7 @@
 
 .nav__avatar {
     object-fit: contain;
+    cursor: pointer;
 }
 
 .nav {
