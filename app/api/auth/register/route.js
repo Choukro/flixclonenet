@@ -7,7 +7,7 @@ export async function POST(request) {
   const { email, password } = body;
 
   if (!email || !password) {
-    return NextResponse("Missing Fields", { status: 400 });
+    return NextResponse("champs requis", { status: 400 });
   }
   const exist = await prisma.user.findUnique({
     where: {
@@ -16,7 +16,7 @@ export async function POST(request) {
   });
 
   if (exist) {
-    throw new Error("Email already exists");
+    throw new Error("email déjà utilisé");
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);

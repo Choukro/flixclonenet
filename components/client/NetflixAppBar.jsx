@@ -16,6 +16,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 const Search = styled("div")(({ theme }) => ({
   marginRight: "10px",
@@ -100,7 +101,7 @@ const NetflixAppBar = () => {
         <Toolbar>
           <Image
             className="nav__logo"
-            src="/assets/netflix-logo.png"
+            src="/assets/netflix-logo.svg"
             alt="Logo Netflix"
             height={30}
             width={96}
@@ -148,6 +149,13 @@ const NetflixAppBar = () => {
             height={30}
             width={96}
             className="nav__avatar"
+            onClick={async () => {
+              const data = await signOut({
+                redirect: false,
+                callbackUrl: "/auth",
+              });
+              router.push(data.url);
+            }}
           />
         </Toolbar>
       </AppBar>

@@ -13,27 +13,31 @@ export const authConfig = {
       name: "credentials",
       async authorize(credentials) {
         const { email, password } = credentials;
-        try {
-          const user = await prisma.user.findUnique({
-            where: {
-              email: email,
-            },
-          });
+        const user = await prisma.user.findUnique({
+          where: {
+            email: email,
+          },
+        });
 
-          if (!user) {
-            return null;
-          }
-
-          const passwordsMatch = bcrypt.compare(password, user.hashedPassword);
-
-          if (!passwordsMatch) {
-            return null;
-          }
-
-          return user;
-        } catch (error) {
-          console.log("Error: ", error);
+        if (!email || !password) {
+          throw new Error("champs invalides");
         }
+
+        //if no user was found
+        if (!user || !user?.hashedPassword) {
+          throw new Error("aucun utilisateur trouvé");
+        }
+
+        const passwordsMatch = await bcrypt.compare(
+          password,
+          user.hashedPassword
+        );
+
+        if (!passwordsMatch) {
+          throw new Error("champs invalides");
+        }
+
+        return user;
       },
     }),
   ],
