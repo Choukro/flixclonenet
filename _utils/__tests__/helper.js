@@ -4,8 +4,8 @@ import {
   getRandomMovie,
   getRandomSerie,
   getRandomId,
-} from "../_utils/helper";
-import { TYPE_TV, TYPE_MOVIE } from "../_utils/constants";
+} from "../helper";
+import { TYPE_TV, TYPE_MOVIE } from "../constants";
 
 test("Retourne une nombre entier alétoire", () => {
   const min = 0;
