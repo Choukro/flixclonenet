@@ -18,6 +18,21 @@ import InputBase from "@mui/material/InputBase";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import Tooltip from "@mui/material/Tooltip";
+import { NetflixAppBarToggle } from "./NetflixAppBarToggle";
+
+const DesktopToolbar = styled(Toolbar)(({ theme }) => ({
+  display: "none",
+  [theme.breakpoints.up("md")]: {
+    display: "flex",
+  },
+}));
+
+const MobileToolbar = styled(Toolbar)(({ theme }) => ({
+  display: "flex",
+  [theme.breakpoints.up("md")]: {
+    display: "none",
+  },
+}));
 
 const Search = styled("div")(({ theme }) => ({
   marginRight: "10px",
@@ -99,7 +114,7 @@ const NetflixAppBar = () => {
   return (
     <nav>
       <AppBar style={appBarStyle}>
-        <Toolbar>
+        <DesktopToolbar>
           <Image
             className="nav__logo"
             src="/assets/netflix-logo.svg"
@@ -124,7 +139,7 @@ const NetflixAppBar = () => {
           </Link>
           <Link href="/news">
             <Typography style={margin10} variant="subtitle2">
-              Nouveautés les plus regardées
+              Nouveautés
             </Typography>
           </Link>
           <Link href="/bookmark">
@@ -147,7 +162,7 @@ const NetflixAppBar = () => {
           <Tooltip title="Se déconnecter">
             <Image
               src="/assets/netflix-avatar.png"
-              alt=""
+              alt="Avatar profil"
               height={30}
               width={96}
               className="nav__avatar"
@@ -160,7 +175,10 @@ const NetflixAppBar = () => {
               }}
             />
           </Tooltip>
-        </Toolbar>
+        </DesktopToolbar>
+        <MobileToolbar>
+          <NetflixAppBarToggle />
+        </MobileToolbar>
       </AppBar>
     </nav>
   );

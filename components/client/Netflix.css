@@ -224,6 +224,24 @@
     }
 }
 
+@media (max-width: 768px) {
+    .banner__title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .synopsis__byId {
+        font-size: 1rem;
+        padding-top: 2rem;
+        width: 95%;
+    }
+    .synopsis {
+        font-size: 1rem;
+        width: 95%;
+    }
+}
+
 .banner__buttons {
     margin-top: 1vw;
     display: flex;
@@ -299,6 +317,10 @@
 .nav__avatar {
     object-fit: contain;
     cursor: pointer;
+}
+
+.nav__avatar--mobile {
+    margin-left: auto;
 }
 
 .nav {
