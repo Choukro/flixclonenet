@@ -20,6 +20,10 @@ import { signOut } from "next-auth/react";
 import Tooltip from "@mui/material/Tooltip";
 import { NetflixAppBarToggle } from "./NetflixAppBarToggle";
 
+const CustomAppBar = styled(AppBar)(({ theme }) => ({
+  paddingRight: "0px !important",
+}));
+
 const DesktopToolbar = styled(Toolbar)(({ theme }) => ({
   display: "none",
   [theme.breakpoints.up("md")]: {
@@ -113,7 +117,7 @@ const NetflixAppBar = () => {
   };
   return (
     <nav>
-      <AppBar style={appBarStyle}>
+      <CustomAppBar style={appBarStyle}>
         <DesktopToolbar>
           <Image
             className="nav__logo"
@@ -179,7 +183,7 @@ const NetflixAppBar = () => {
         <MobileToolbar>
           <NetflixAppBarToggle />
         </MobileToolbar>
-      </AppBar>
+      </CustomAppBar>
     </nav>
   );
 };
