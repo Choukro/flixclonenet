@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 
 export const authConfig = {
   pages: {
-    signIn: "/",
+    signIn: "/auth",
   },
   adapter: PrismaAdapter(prisma),
   providers: [

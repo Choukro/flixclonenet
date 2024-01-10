@@ -71,7 +71,7 @@ function PopupLogin({ open, handleClose, signup = false }) {
       redirect: false,
       callbackUrl: "/",
     });
-    console.log("response", response);
+    // console.log("response", response);
     // const responseData = await response.json();
     if (response.ok) {
       setStatus(true);

@@ -18,6 +18,25 @@ import InputBase from "@mui/material/InputBase";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import Tooltip from "@mui/material/Tooltip";
+import { NetflixAppBarToggle } from "./NetflixAppBarToggle";
+
+const CustomAppBar = styled(AppBar)(({ theme }) => ({
+  paddingRight: "0px !important",
+}));
+
+const DesktopToolbar = styled(Toolbar)(({ theme }) => ({
+  display: "none",
+  [theme.breakpoints.up("md")]: {
+    display: "flex",
+  },
+}));
+
+const MobileToolbar = styled(Toolbar)(({ theme }) => ({
+  display: "flex",
+  [theme.breakpoints.up("md")]: {
+    display: "none",
+  },
+}));
 
 const Search = styled("div")(({ theme }) => ({
   marginRight: "10px",
@@ -98,8 +117,8 @@ const NetflixAppBar = () => {
   };
   return (
     <nav>
-      <AppBar style={appBarStyle}>
-        <Toolbar>
+      <CustomAppBar style={appBarStyle}>
+        <DesktopToolbar>
           <Image
             className="nav__logo"
             src="/assets/netflix-logo.svg"
@@ -124,14 +143,14 @@ const NetflixAppBar = () => {
           </Link>
           <Link href="/news">
             <Typography style={margin10} variant="subtitle2">
-              Nouveautés les plus regardées
+              Nouveautés
             </Typography>
           </Link>
-          <a href="/bookmark">
+          <Link href="/bookmark">
             <Typography style={margin10} variant="subtitle2">
               Ma liste
             </Typography>
-          </a>
+          </Link>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -147,7 +166,7 @@ const NetflixAppBar = () => {
           <Tooltip title="Se déconnecter">
             <Image
               src="/assets/netflix-avatar.png"
-              alt=""
+              alt="Avatar profil"
               height={30}
               width={96}
               className="nav__avatar"
@@ -160,8 +179,11 @@ const NetflixAppBar = () => {
               }}
             />
           </Tooltip>
-        </Toolbar>
-      </AppBar>
+        </DesktopToolbar>
+        <MobileToolbar>
+          <NetflixAppBarToggle />
+        </MobileToolbar>
+      </CustomAppBar>
     </nav>
   );
 };

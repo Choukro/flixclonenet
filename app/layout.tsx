@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'FlixClone.net',
-  description: 'Clone d&rsquo;une plateforme de streaming de séries et de films en ligne',
+  description: "Clone d'une plateforme de streaming de séries et de films en ligne",
 }
 
 export default function RootLayout({
