@@ -127,11 +127,11 @@ const NetflixAppBar = () => {
               Nouveautés les plus regardées
             </Typography>
           </Link>
-          <a href="/bookmark">
+          <Link href="/bookmark">
             <Typography style={margin10} variant="subtitle2">
               Ma liste
             </Typography>
-          </a>
+          </Link>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
