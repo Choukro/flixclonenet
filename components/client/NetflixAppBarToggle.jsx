@@ -13,8 +13,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const NetflixAppBarToggle = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const router = useRouter();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -63,7 +67,7 @@ const NetflixAppBarToggle = () => {
         }}
         transformOrigin={{
           vertical: "top",
-          horizontal: "center",
+          horizontal: isMobile ? "left" : "center",
         }}
       >
         <MenuItem onClick={handleClose}>

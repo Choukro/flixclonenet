@@ -321,6 +321,13 @@
 
 .nav__avatar--mobile {
     margin-left: auto;
+    object-position: 2.5rem;
+}
+
+@media (max-width: 768px) {
+    .nav__avatar--mobile {
+        object-position: right;
+    }
 }
 
 .nav {
