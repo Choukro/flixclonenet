@@ -6,7 +6,7 @@ import { CheckCircle2 } from "lucide-react";
 import { Plus } from "lucide-react";
 import { Check } from "lucide-react";
 import { TYPE_MOVIE } from "../../_utils/constants";
-import Tooltip from "@mui/material/Tooltip";
+// import Tooltip from "@mui/material/Tooltip";
 
 const BookmarkButton = ({ movieId, type, row = false }) => {
   const { data, mutate: mutateFavorites } = useFavorites();
@@ -46,26 +46,26 @@ const BookmarkButton = ({ movieId, type, row = false }) => {
     // });
     mutateFavorites();
   }, [movieId, isFavorite, type, mutateFavorites]);
-  const CustomCheck = (props) => <Check {...props} />;
-  const CustomPlus = (props) => <Plus {...props} />;
-  const CustomCheckCircle2 = (props) => <CheckCircle2 {...props} />;
-  const CustomPlusCircle = (props) => <PlusCircle {...props} />;
+  // const CustomCheck = (props) => <Check {...props} />;
+  // const CustomPlus = (props) => <Plus {...props} />;
+  // const CustomCheckCircle2 = (props) => <CheckCircle2 {...props} />;
+  // const CustomPlusCircle = (props) => <PlusCircle {...props} />;
   let Icon;
   if (row) {
-    Icon = isFavorite ? CustomCheck : CustomPlus;
+    Icon = isFavorite ? Check : Plus;
   } else {
-    Icon = isFavorite ? CustomCheckCircle2 : CustomPlusCircle;
+    Icon = isFavorite ? CheckCircle2 : PlusCircle;
   }
 
   return (
-    <Tooltip
-      title={isFavorite ? "Supprimer de ma liste" : "Ajouter à ma liste"}
-    >
+    // <Tooltip
+    //   title={isFavorite ? "Supprimer de ma liste" : "Ajouter à ma liste"}
+    // >
       <Icon
         className={row ? "card__icon--small card__icon--lucide" : ""}
         onClick={toggleFavorites}
       />
-    </Tooltip>
+    // </Tooltip>
   );
 };
 
