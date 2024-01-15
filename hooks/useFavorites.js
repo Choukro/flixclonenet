@@ -2,9 +2,9 @@
 
 import useSWR from "swr";
 
-import fetcher from "../_lib/fetcher";
+// import fetcher from "../_lib/fetcher";
 
-// const fetcher = (...args) => fetch(...args).then((res) => res.json());
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const useFavorites = () => {
   const { data, isLoading, error, mutate } = useSWR("/api/bookmark", fetcher, {
