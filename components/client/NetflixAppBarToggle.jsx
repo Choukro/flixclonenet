@@ -15,43 +15,19 @@ import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import logo from "../../public/assets/netflix-logo.svg";
+import avatar from "../../public/assets/netflix-avatar.png";
 
-const NetflixAppBarToggle = () => {
+const NetflixAppBarMenu = ({ anchorEl, setAnchorEl}) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const router = useRouter();
-  const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    event.preventDefault();
-    setAnchorEl(event.currentTarget);
-  };
   const handleClose = () => {
-    setAnchorEl(null);
-  };
-
+      setAnchorEl(null);
+    };
   return (
-    <>
-      <Image
-        className="nav__logo"
-        src="/assets/netflix-logo.svg"
-        alt="Logo Netflix"
-        height={30}
-        width={96}
-      />
-      <Image
-        src="/assets/netflix-avatar.png"
-        alt="Avatar profil"
-        height={30}
-        width={96}
-        className="nav__avatar nav__avatar--mobile"
-        id="basic-button"
-        aria-controls={open ? "basic-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
-      />
-      <Menu
+    <Menu
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
@@ -97,7 +73,35 @@ const NetflixAppBarToggle = () => {
           Se déconnecter
         </MenuItem>
       </Menu>
-    </>
+  );
+};
+
+
+const NetflixAppBarToggle = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClick = (event) => {
+    event.preventDefault();
+    setAnchorEl(event.currentTarget);
+  };
+  return (
+    <>
+      <Image
+        className="nav__logo"
+        src={logo}
+        alt="Logo Netflix"
+        />
+        <Image
+          src={avatar}
+          alt="Avatar profil"
+          className="nav__avatar nav__avatar--mobile"
+          id="basic-button"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+          />
+        {anchorEl && <NetflixAppBarMenu anchorEl={anchorEl} setAnchorEl={setAnchorEl} />}
+      </>
   );
 };
 

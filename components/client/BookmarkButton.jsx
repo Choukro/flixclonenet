@@ -46,12 +46,15 @@ const BookmarkButton = ({ movieId, type, row = false }) => {
     // });
     mutateFavorites();
   }, [movieId, isFavorite, type, mutateFavorites]);
-
+  const CustomCheck = (props) => <Check {...props} />;
+  const CustomPlus = (props) => <Plus {...props} />;
+  const CustomCheckCircle2 = (props) => <CheckCircle2 {...props} />;
+  const CustomPlusCircle = (props) => <PlusCircle {...props} />;
   let Icon;
   if (row) {
-    Icon = isFavorite ? Check : Plus;
+    Icon = isFavorite ? CustomCheck : CustomPlus;
   } else {
-    Icon = isFavorite ? CheckCircle2 : PlusCircle;
+    Icon = isFavorite ? CustomCheckCircle2 : CustomPlusCircle;
   }
 
   return (
