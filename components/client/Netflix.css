@@ -312,11 +312,15 @@
 .nav__logo {
     object-fit: contain;
     margin-right : 25px;
+    height: 30px;
+    width: 96px;
 }
 
 .nav__avatar {
     object-fit: contain;
     cursor: pointer;
+    height:30px;
+    width:96px;
 }
 
 .nav__avatar--mobile {
