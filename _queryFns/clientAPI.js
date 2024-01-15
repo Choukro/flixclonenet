@@ -1,5 +1,5 @@
 import { API_KEY, LANG } from "../_utils/constants.js";
-import { jsonPlaceholderAxios } from "../jsonPlaceholderAxios.js";
+import { jsonPlaceholderAxios } from "../_utils/jsonPlaceholderAxios.js";
 
 // utilise 'sleep' pour simuler des api longue
 //const sleep = t => new Promise(resolve => setTimeout(resolve, t))
