@@ -18,15 +18,36 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import logo from "../../public/assets/netflix-logo.svg";
 import avatar from "../../public/assets/netflix-avatar.png";
 
-const NetflixAppBarMenu = ({ anchorEl, setAnchorEl}) => {
+const NetflixAppBarToggle = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const router = useRouter();
-  const open = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = anchorEl !== null;
+  const handleClick = (event) => {
+    event.preventDefault();
+    setAnchorEl(event.currentTarget);
+  };
   const handleClose = () => {
       setAnchorEl(null);
     };
   return (
+    <>
+    <Image
+        className="nav__logo"
+        src={logo}
+        alt="Logo Netflix"
+        />
+        <Image
+          src={avatar}
+          alt="Avatar profil"
+          className="nav__avatar nav__avatar--mobile"
+          id="basic-button"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+          />
     <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -73,34 +94,6 @@ const NetflixAppBarMenu = ({ anchorEl, setAnchorEl}) => {
           Se déconnecter
         </MenuItem>
       </Menu>
-  );
-};
-
-
-const NetflixAppBarToggle = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const handleClick = (event) => {
-    event.preventDefault();
-    setAnchorEl(event.currentTarget);
-  };
-  return (
-    <>
-      <Image
-        className="nav__logo"
-        src={logo}
-        alt="Logo Netflix"
-        />
-        <Image
-          src={avatar}
-          alt="Avatar profil"
-          className="nav__avatar nav__avatar--mobile"
-          id="basic-button"
-          aria-controls={open ? "basic-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleClick}
-          />
-        {anchorEl && <NetflixAppBarMenu anchorEl={anchorEl} setAnchorEl={setAnchorEl} />}
       </>
   );
 };
