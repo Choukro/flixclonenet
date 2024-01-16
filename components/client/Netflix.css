@@ -430,6 +430,11 @@
     align-items: center;
 }
 
+.card__tooltip {
+    display: flex;
+    align-items: center;
+}
+
 .card__icon--large {
     width: 1.5rem;
     height: 1.5rem;

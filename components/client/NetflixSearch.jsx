@@ -27,7 +27,6 @@ import { useParams } from "next/navigation";
 import { imagePathOriginal } from "../../_utils/constants.js";
 import Link from "next/link";
 import { RowSkeleton } from "../skeletons/RowSkeleton.jsx";
-import Tooltip from "@mui/material/Tooltip";
 
 export async function getStaticProps(params) {
   const queryClient = new QueryClient();
@@ -65,7 +64,6 @@ const NetflixSearch = () => {
       error.message
     );
   }
-  // console.log("%c Header of NetflixSearch isLoading", "color: red", isLoading);
   if (isLoading || !defaultMovie) {
     return (
       <>
@@ -119,9 +117,7 @@ const NetflixSearch = () => {
               target="_blank"
             >
               <button className="banner__button banner__buttonInfo">
-                <Tooltip title="En savoir plus">
                   <Info />
-                </Tooltip>
               </button>
             </a>
             <button className="banner__button banner__buttonInfo">
@@ -215,5 +211,3 @@ const NetflixSearchRoute = ({ dehydratedState }) => {
 };
 
 export { NetflixSearchRoute };
-
-// export { NetflixSearch };

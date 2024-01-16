@@ -17,10 +17,11 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
-import Tooltip from "@mui/material/Tooltip";
 import { NetflixAppBarToggle } from "./NetflixAppBarToggle";
 import logo from "../../public/assets/netflix-logo.svg";
 import avatar from "../../public/assets/netflix-avatar.png";
+import { Tooltip } from 'react-tooltip'
+
 
 const CustomAppBar = styled(AppBar)(() => ({
   paddingRight: "0px !important",
@@ -157,6 +158,8 @@ const NetflixAppBar = () => {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
+              id="search"
+              name="search"
               onKeyDown={handleKeyPress}
               onChange={(e) => setQuery(e.target.value)}
               value={query}
@@ -164,7 +167,11 @@ const NetflixAppBar = () => {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-          <Tooltip title="Se déconnecter">
+          <a 
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content="Se déconnecter"
+              data-tooltip-place="top"
+          >
             <Image
               src={avatar}
               alt="Avatar profil"
@@ -177,7 +184,8 @@ const NetflixAppBar = () => {
                 router.push(data.url);
               }}
             />
-          </Tooltip>
+            </a>
+          <Tooltip id="my-tooltip" />
         </DesktopToolbar>
         <MobileToolbar>
           <NetflixAppBarToggle />
