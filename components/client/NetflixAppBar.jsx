@@ -26,6 +26,7 @@ import { Tooltip } from 'react-tooltip'
 const CustomAppBar = styled(AppBar)(() => ({
   paddingRight: "0px !important",
   // minWidth: "100vw",
+
 }));
 
 const DesktopToolbar = styled(Toolbar)(({ theme }) => ({
@@ -175,6 +176,7 @@ const NetflixAppBar = () => {
             <Image
               src={avatar}
               alt="Avatar profil"
+
               className="nav__avatar"
               onClick={async () => {
                 const data = await signOut({

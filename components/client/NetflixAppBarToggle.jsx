@@ -65,6 +65,7 @@ const NetflixAppBarToggle = () => {
         transformOrigin={{
           vertical: "top",
           horizontal: isMobile ? "left" : "center",
+
         }}
       >
         <MenuItem onClick={handleClose}>

@@ -334,6 +334,10 @@
     }
 }
 
+.nav__avatar--mobile {
+    margin-left: auto;
+}
+
 .nav {
     position: fixed;
     top: 0;
