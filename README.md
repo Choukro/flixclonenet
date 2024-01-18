@@ -125,7 +125,7 @@ npm --version
    ```js
    const NEXT_PUBLIC_TMDB_API_KEY = 'ENTRER VOTRE API';
    ```
-5. Configurer les autres variables d'environnement selon votre choix de  la base de données et du service Cloud permettant le déploiement de l'application 
+5. Configurer les autres variables d'environnement selon vos choix de la base de données et du service Cloud permettant le déploiement de l'application 
 
 7. Remplacer le nom du fichier `.env.template` par `.env.local`
 
