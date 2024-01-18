@@ -10,9 +10,7 @@
 import * as React from "react";
 import { Play } from "lucide-react";
 import { Info } from "lucide-react";
-// import { PlusCircle } from "lucide-react";
 import { BookmarkButton } from "../client/BookmarkButton";
-import Tooltip from "@mui/material/Tooltip";
 
 import {
   imagePathOriginal,
@@ -78,21 +76,9 @@ const NetflixHeader = ({ type }) => {
     );
   }
   const title = movie?.title ? movie?.title : movie?.name;
-  // if (isLoading) return <div style={{ color: "white" }}>Loading...</div>;
-  // if (!headerMovie) return <div style={{ color: "white" }}>Not found</div>;
-  // const title = type === TYPE_MOVIE ? movie?.title : movie?.name;
   const searchType = movie?.title ? TYPE_MOVIE : TYPE_TV;
   const imageUrl = `${imagePathOriginal}${movie?.backdrop_path}`;
   const banner = {
-    // backgroundImage: `url('${imageUrl}')`,
-    // backgroundSize: "cover",
-    // // backgroundPosition: "50%",
-    // color: "white",
-    // width: "100%",
-    // position: "absolute",
-    // top: "0",
-    // right: "0",
-    // bottom: "0",
     backgroundImage: `url('${imageUrl}')`,
     backgroundSize: "cover",
     backgroundPosition: "center top",
@@ -121,9 +107,7 @@ const NetflixHeader = ({ type }) => {
             target="_blank"
           >
             <button className="banner__button banner__buttonInfo">
-              <Tooltip title="En savoir plus">
                 <Info />
-              </Tooltip>
             </button>
           </a>
           <button className="banner__button banner__buttonInfo">

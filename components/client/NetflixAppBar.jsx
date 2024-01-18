@@ -17,11 +17,16 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
-import Tooltip from "@mui/material/Tooltip";
 import { NetflixAppBarToggle } from "./NetflixAppBarToggle";
+import logo from "../../public/assets/netflix-logo.svg";
+import avatar from "../../public/assets/netflix-avatar.png";
+import { Tooltip } from 'react-tooltip'
 
-const CustomAppBar = styled(AppBar)(({ theme }) => ({
+
+const CustomAppBar = styled(AppBar)(() => ({
   paddingRight: "0px !important",
+  // minWidth: "100vw",
+
 }));
 
 const DesktopToolbar = styled(Toolbar)(({ theme }) => ({
@@ -121,10 +126,8 @@ const NetflixAppBar = () => {
         <DesktopToolbar>
           <Image
             className="nav__logo"
-            src="/assets/netflix-logo.svg"
+            src={logo}
             alt="Logo Netflix"
-            height={30}
-            width={96}
           />
           <Link href="/">
             <Typography style={margin10} variant="subtitle2">
@@ -156,6 +159,8 @@ const NetflixAppBar = () => {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
+              id="search"
+              name="search"
               onKeyDown={handleKeyPress}
               onChange={(e) => setQuery(e.target.value)}
               value={query}
@@ -163,12 +168,15 @@ const NetflixAppBar = () => {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-          <Tooltip title="Se déconnecter">
+          <a 
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content="Se déconnecter"
+              data-tooltip-place="top"
+          >
             <Image
-              src="/assets/netflix-avatar.png"
+              src={avatar}
               alt="Avatar profil"
-              height={30}
-              width={96}
+
               className="nav__avatar"
               onClick={async () => {
                 const data = await signOut({
@@ -178,7 +186,8 @@ const NetflixAppBar = () => {
                 router.push(data.url);
               }}
             />
-          </Tooltip>
+            </a>
+          <Tooltip id="my-tooltip" />
         </DesktopToolbar>
         <MobileToolbar>
           <NetflixAppBarToggle />

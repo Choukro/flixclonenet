@@ -13,41 +13,42 @@ import Image from "next/image";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import logo from "../../public/assets/netflix-logo.svg";
+import avatar from "../../public/assets/netflix-avatar.png";
 
 const NetflixAppBarToggle = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const router = useRouter();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const open = anchorEl !== null;
   const handleClick = (event) => {
     event.preventDefault();
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
-    setAnchorEl(null);
-  };
-
+      setAnchorEl(null);
+    };
   return (
     <>
-      <Image
+    <Image
         className="nav__logo"
-        src="/assets/netflix-logo.svg"
+        src={logo}
         alt="Logo Netflix"
-        height={30}
-        width={96}
-      />
-      <Image
-        src="/assets/netflix-avatar.png"
-        alt="Avatar profil"
-        height={30}
-        width={96}
-        className="nav__avatar nav__avatar--mobile"
-        id="basic-button"
-        aria-controls={open ? "basic-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
-      />
-      <Menu
+        />
+        <Image
+          src={avatar}
+          alt="Avatar profil"
+          className="nav__avatar nav__avatar--mobile"
+          id="basic-button"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+          />
+    <Menu
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
@@ -63,7 +64,8 @@ const NetflixAppBarToggle = () => {
         }}
         transformOrigin={{
           vertical: "top",
-          horizontal: "center",
+          horizontal: isMobile ? "left" : "center",
+
         }}
       >
         <MenuItem onClick={handleClose}>
@@ -93,7 +95,7 @@ const NetflixAppBarToggle = () => {
           Se déconnecter
         </MenuItem>
       </Menu>
-    </>
+      </>
   );
 };
 

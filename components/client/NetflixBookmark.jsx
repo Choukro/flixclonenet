@@ -26,9 +26,7 @@ import { imagePathOriginal } from "../../_utils/constants.js";
 import { RowCard } from "./NetFlixRowView.jsx";
 import { RowSkeleton } from "../skeletons/RowSkeleton.jsx";
 import useFavorites from "../../hooks/useFavorites";
-import Tooltip from "@mui/material/Tooltip";
 
-// import CircularProgress from "@mui/material/CircularProgress";
 
 export async function getStaticProps({ type, id }) {
   const queryClient = new QueryClient();
@@ -80,14 +78,6 @@ const NetflixBookmark = (dehydratedState) => {
     router.push("/404");
     return null;
   }
-  // if (isLoading) {
-  //   return (
-  //     <>
-  //       <HeaderSkeleton />
-  //       <RowSkeleton />
-  //     </>
-  //   );
-  // }
   if (isSuccess) {
     console.log(
       `%c Query success (movieHeader, ${type}, ${id}) :`,
@@ -131,9 +121,7 @@ const NetflixBookmark = (dehydratedState) => {
               target="_blank"
             >
               <button className="banner__button banner__buttonInfo">
-                <Tooltip title="En savoir plus">
                   <Info />
-                </Tooltip>
               </button>
             </a>
             <button className="banner__button banner__buttonInfo">
@@ -200,7 +188,6 @@ const Card = ({ id, type, watermark, wideImage, dehydratedState }) => {
     data: movieById,
     isError,
     isSuccess,
-    // isLoading: isMovieLoading,
     error,
   } = useQuery({
     queryKey: ["movieList", type, id],
@@ -217,9 +204,6 @@ const Card = ({ id, type, watermark, wideImage, dehydratedState }) => {
     router.push("/404");
     return null;
   }
-  //   if (isMovieLoading) {
-  //     return <CircularProgress style={{ color: "red" }} />;
-  //   }
   if (isSuccess) {
     console.log(
       `%c Query success (movieList, ${type}, ${id}) :`,

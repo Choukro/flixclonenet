@@ -312,11 +312,26 @@
 .nav__logo {
     object-fit: contain;
     margin-right : 25px;
+    height: 30px;
+    width: 96px;
 }
 
 .nav__avatar {
     object-fit: contain;
     cursor: pointer;
+    height:30px;
+    width:96px;
+}
+
+.nav__avatar--mobile {
+    margin-left: auto;
+    object-position: 2.5rem;
+}
+
+@media (max-width: 768px) {
+    .nav__avatar--mobile {
+        object-position: right;
+    }
 }
 
 .nav__avatar--mobile {
@@ -416,6 +431,11 @@
 .card__icons {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.card__tooltip {
+    display: flex;
     align-items: center;
 }
 

@@ -13,9 +13,8 @@ import { TYPE_MOVIE, imagePath400 } from "../../_utils/constants.js";
 import Image from "next/image";
 import Link from "next/link";
 import { AlignJustify } from "lucide-react";
-// import { Plus } from "lucide-react";
 import { BookmarkButton } from "../client/BookmarkButton";
-import Tooltip from "@mui/material/Tooltip";
+
 
 const NetflixRowView = ({
   data = [],
@@ -128,18 +127,6 @@ const RowCard = ({ movie, type, watermark, wideImage }) => {
                 <div className="card__icon">
                   <button className="btn btn--transparent btn--circle">
                     <BookmarkButton movieId={movie.id} type={type} row={true} />
-
-                    {/* <Plus className="card__icon--small card__icon--lucide" /> */}
-                    {/* <svg
-                      className="card__icon--small"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 0a1.5 1.5 0 011.5 1.5v9h9a1.5 1.5 0 110 3h-9v9a1.5 1.5 0 11-3 0v-9h-9a1.5 1.5 0 110-3h9v-9A1.5 1.5 0 0112 0z" />
-                    </svg> */}
                   </button>
                   <a
                     href={`https://www.google.com/search?q=${type}%20${title}`}
@@ -147,9 +134,7 @@ const RowCard = ({ movie, type, watermark, wideImage }) => {
                     target="_blank"
                   >
                     <button className="btn btn--transparent btn--circle">
-                      <Tooltip title="En savoir plus">
                         <AlignJustify className="card__icon--small card__icon--lucide" />
-                      </Tooltip>
                     </button>
                   </a>
                 </div>

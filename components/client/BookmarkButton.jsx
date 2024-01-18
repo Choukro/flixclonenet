@@ -1,4 +1,3 @@
-// import useCurrentUser from "@/hooks/useCurrentUser";
 import useFavorites from "../../hooks/useFavorites";
 import { useCallback, useMemo } from "react";
 import { PlusCircle } from "lucide-react";
@@ -6,11 +5,10 @@ import { CheckCircle2 } from "lucide-react";
 import { Plus } from "lucide-react";
 import { Check } from "lucide-react";
 import { TYPE_MOVIE } from "../../_utils/constants";
-import Tooltip from "@mui/material/Tooltip";
+import { Tooltip } from 'react-tooltip'
 
 const BookmarkButton = ({ movieId, type, row = false }) => {
   const { data, mutate: mutateFavorites } = useFavorites();
-  //   const { data: currentUser, mutate } = useCurrentUser();
 
   const isFavorite = useMemo(() => {
     const list = data?.[type === TYPE_MOVIE ? "movies" : "series"] || [];
@@ -38,15 +36,8 @@ const BookmarkButton = ({ movieId, type, row = false }) => {
       });
     }
 
-    // const updatedFavoriteIds = response?.data?.favoriteIds;
-
-    // mutate({
-    //   ...currentUser,
-    //   favoriteIds: updatedFavoriteIds,
-    // });
     mutateFavorites();
   }, [movieId, isFavorite, type, mutateFavorites]);
-
   let Icon;
   if (row) {
     Icon = isFavorite ? Check : Plus;
@@ -55,14 +46,20 @@ const BookmarkButton = ({ movieId, type, row = false }) => {
   }
 
   return (
-    <Tooltip
-      title={isFavorite ? "Supprimer de ma liste" : "Ajouter à ma liste"}
-    >
-      <Icon
-        className={row ? "card__icon--small card__icon--lucide" : ""}
-        onClick={toggleFavorites}
-      />
-    </Tooltip>
+    <>
+      <a 
+      className="card__tooltip"
+        data-tooltip-id="my-tooltip"
+        data-tooltip-content={isFavorite ? "Supprimer de ma liste" : "Ajouter à ma liste"}
+        data-tooltip-place="top"
+      >
+        <Icon
+          className={row ? "card__icon--small card__icon--lucide" : ""}
+          onClick={toggleFavorites}
+        />
+      </a>
+      <Tooltip id="my-tooltip" />
+    </>
   );
 };
 
